@@ -1,34 +1,39 @@
 import { useState } from 'react'
 import './App.css'
 import avatarImage from './assets/danil-avatar.png'
+import raifIcon from './assets/icons/raif.svg'
+import indriveIcon from './assets/icons/indrive.svg'
+import bestdoctorIcon from './assets/icons/bestdoctor.svg'
+import netologyIcon from './assets/icons/netology.svg'
+import konturIcon from './assets/icons/kontur.svg'
+import factIcon from './assets/icons/fact.svg'
 
 const contacts = [
   { label: 'Телеграм', href: 'https://t.me/danilefremov' },
   { label: 'Почта', href: 'mailto:efremovdanil0@gmail.com' },
-  {
-    label: 'ЛинкедИн',
-    href: 'https://www.linkedin.com/in/danil-efremov-34a3216b/',
-  },
+  { label: 'ЛинкедИн', href: 'https://www.linkedin.com/in/danil-efremov-34a3216b/' },
 ]
 
 const summary = [
-  'Сложное делаю простым и удобным. Больше заточен под внутренние продукты и B2B.',
-  'Люблю дизайн-системы, а ещё больше - когда они сделаны своими руками.',
-  'Умею глубоко исследовать интерфейс, сценарии и проверять продуктовые гипотезы.',
+  'Сложное делаю простым и удобным. Больше заточен под внутренние продукты и B2B',
+  'Люблю дизайн-системы, а ещё больше - когда они сделаны своими руками',
+  'Умею глубоко исследовать интерфейс, сценарии и проверять продуктовые гипотезы',
 ]
 
 const storyTreeParagraphs = [
-  'В 2018 году исследовали большой продукт и найденное закидывали в Миро. Исследование закончили, но осталось сильное впечатление о сложности ведения документации в таком формате. Пробовал The Brain и Tinderbox, но интерфейс из нулевых и заточенность под академические сценарии всё только усложняли.',
+  'В 2018 году исследовали большой продукт и найденное закидывали в Miro. Исследование закончили, но осталось сильное впечатление о сложности ведения документации в таком формате. Пробовал The Brain и Tinderbox, но интерфейс из нулевых и заточенность под академические сценарии всё только усложняли.',
   'Очень захотелось сделать не просто очередную майндмап-софтину, а штуку, которая помогает быстро выгружать из головы сложные мысли и структурировать их. За следующие три года нашёл несколько сильных инженеров, готовых делать это за идею и долю в продукте, но хороший canvas-рендер даже маленькой командой оказалось сделать непросто.',
   'В итоге мечта о хорошем инструменте для мышления пока не сбылась, но остались артефакты: исследование рынка, задизайненный MVP продукта и промо.',
 ]
 
 const experience = [
   {
+    icon: raifIcon,
+    iconAlt: 'Raif',
     role: 'Старший продуктовый дизайнер',
-    companyLabel: 'в Райфе',
+    company: 'Райфе',
     companyHref: 'https://www.raiffeisen.ru/',
-    period: 'С сентября 2024',
+    period: 'Сентябрь 2024 → Сейчас',
     projects: [
       {
         title: 'Raif Integrations',
@@ -41,18 +46,19 @@ const experience = [
     ],
   },
   {
+    icon: indriveIcon,
+    iconAlt: 'inDrive',
     role: 'Старший продуктовый дизайнер',
-    companyLabel: 'в inDrive',
+    company: 'inDrive',
     companyHref: 'https://indrive.com/',
     period: 'Апрель 2022 → Сентябрь 2024',
     projects: [
       {
         title: 'SBDU',
         paragraphs: [
-          'С нуля сделал веб-админку для Server Backend Driven UI. SBDU помогал без релизного цикла на мобиле менять содержимое страниц и быстро проводить A/B-тестирование.',
+          'С нуля сделал веб-админку для Server Backend Driven UI. SBDU помогает без релизного цикла на мобиле менять содержимое страниц и быстро проводить A/B-тестирование.',
           'В админке можно собрать и баннер, и экран, и целое флоу с динамическими данными или локализацией. Получилось что-то похожее на Figma, но с инъекциями кода для бэкенда.',
           'Этим инструментом пользовались дизайнеры, продакты и разработчики. Админку назвали Widgeteria.',
-          'Сборка виджетов почти полностью ограничена компонентами дизайн-системы, но есть и кросс-командные блоки, например CSAT и NPS.',
         ],
       },
       {
@@ -72,8 +78,10 @@ const experience = [
     ],
   },
   {
+    icon: bestdoctorIcon,
+    iconAlt: 'Лучи / BestDoctor',
     role: 'Продуктовый дизайнер',
-    companyLabel: 'в Лучах (ex. BestDoctor)',
+    company: 'Лучах (ex. BestDoctor)',
     companyHref: 'https://bestdoctor.ru',
     period: 'Июль 2021 → Апрель 2022',
     projects: [
@@ -105,23 +113,27 @@ const experience = [
     ],
   },
   {
+    icon: netologyIcon,
+    iconAlt: 'Нетология',
     role: 'Продуктовый дизайнер',
-    companyLabel: 'в Нетологии',
+    company: 'Нетологии',
     companyHref: 'https://netology.ru/',
     period: 'Ноябрь 2020 → Май 2021',
     projects: [
       {
         title: 'Learning Management System, или LMS',
         paragraphs: [
-          'LMS - это то, с чем взаимодействуют студенты в процессе обучения. Внутри есть две большие части: учебная среда для студентов и админская часть для сотрудников.',
+          'LMS - это то, с чем взаимодействуют студенты в процессе обучения. Внутри есть две большие части: среда обучения для студентов и админская часть для сотрудников.',
           'Я делал лучше обе эти части, но с перевесом в админку.',
         ],
       },
     ],
   },
   {
+    icon: konturIcon,
+    iconAlt: 'Контур',
     role: 'Продуктовый дизайнер',
-    companyLabel: 'в Контуре',
+    company: 'Контуре',
     companyHref: 'https://kontur.ru/',
     period: 'Ноябрь 2017 → Ноябрь 2020',
     projects: [
@@ -131,7 +143,7 @@ const experience = [
         paragraphs: [
           'Всё время, что работал в Контуре, помогал делать Гайды и продуктовые библиотеки.',
           'Перенёс продуктовую библиотеку из Sketch в Figma и работал над её инфраструктурным улучшением. Вместе с разработчиком научили Telegram-бота рассказывать об обновлениях библиотек.',
-          'Был евангелистом Figma, когда она была ещё мало известна. За пару лет ею пользовалось больше 400 человек, не считая дизайнеров.',
+          'Был евангелистом Figma, когда она была ещё мало известна. За пару лет ей пользовалось больше 400 человек, не считая дизайнеров.',
         ],
       },
       {
@@ -153,14 +165,15 @@ const experience = [
         href: 'https://www.kontur-extern.ru/',
         paragraphs: [
           'Помогал делать удобнее сложные формы для отчётности в Пенсионный фонд.',
-          '→ Что сделал → продукты и дизайн-система',
         ],
       },
     ],
   },
   {
+    icon: factIcon,
+    iconAlt: 'Факт',
     role: 'Веб-дизайнер',
-    companyLabel: 'в студии «Факт»',
+    company: 'студии «Факт»',
     companyHref: 'https://fact.digital',
     period: '2014 → 2017',
     projects: [
@@ -174,10 +187,10 @@ const experience = [
     ],
   },
   {
-    role: 'Дизайнер и печатник',
-    companyLabel: 'в частной картинной галерее',
-    period: '2012 → 2014',
     badge: '👨‍🎨',
+    role: 'Дизайнер и печатник',
+    company: 'частной картинной галерее',
+    period: '2012 → 2014',
     projects: [
       {
         title: 'Работал с картинами и дизайнил',
@@ -190,7 +203,7 @@ const experience = [
   },
 ]
 
-function ExternalLink({ href, children, className }) {
+function ExternalLink({ href, className, children }) {
   return (
     <a className={className} href={href} target="_blank" rel="noreferrer">
       {children}
@@ -198,59 +211,68 @@ function ExternalLink({ href, children, className }) {
   )
 }
 
-function ProjectBlock({ project }) {
+function ExperienceProject({ project }) {
   return (
-    <div className="project-block">
+    <section className="experience-project">
       {project.href ? (
-        <ExternalLink href={project.href} className="project-title project-link">
+        <ExternalLink href={project.href} className="experience-project-title link-accent">
           {project.title}
         </ExternalLink>
       ) : (
-        <p className="project-title">{project.title}</p>
+        <h4 className="experience-project-title">{project.title}</h4>
       )}
 
       {project.paragraphs?.map((paragraph) => (
-        <p key={paragraph} className="project-text">
+        <p key={paragraph} className="body-copy">
           {paragraph}
         </p>
       ))}
 
       {project.bullets && (
-        <ul className="project-list">
+        <ul className="bullet-list">
           {project.bullets.map((bullet) => (
-            <li key={bullet}>{bullet}</li>
+            <li key={bullet} className="body-copy">
+              {bullet}
+            </li>
           ))}
         </ul>
       )}
-    </div>
+    </section>
   )
 }
 
 function ExperienceCard({ item }) {
   return (
     <article className="experience-card">
-      <div className="experience-aside">
-        <p className="experience-period">{item.period}</p>
-        {item.badge && <div className="experience-badge">{item.badge}</div>}
+      <div className="experience-meta">
+        {item.icon ? (
+          <img className="experience-icon" src={item.icon} alt={item.iconAlt} />
+        ) : (
+          <div className="experience-badge">{item.badge}</div>
+        )}
+
+        <div className="experience-heading">
+          <h3 className="experience-role">{item.role}</h3>
+          <p className="experience-company">
+            {item.companyHref ? (
+              <>
+                в{' '}
+                <ExternalLink href={item.companyHref} className="link-accent">
+                  {item.company}
+                </ExternalLink>
+              </>
+            ) : (
+              <>в {item.company}</>
+            )}
+          </p>
+          <p className="experience-period">{item.period}</p>
+        </div>
       </div>
 
-      <div className="experience-main">
-        <h3 className="experience-title">
-          <span>{item.role} </span>
-          {item.companyHref ? (
-            <ExternalLink href={item.companyHref} className="experience-company">
-              {item.companyLabel}
-            </ExternalLink>
-          ) : (
-            <span className="experience-company">{item.companyLabel}</span>
-          )}
-        </h3>
-
-        <div className="project-stack">
-          {item.projects.map((project) => (
-            <ProjectBlock key={`${item.period}-${project.title}`} project={project} />
-          ))}
-        </div>
+      <div className="experience-content">
+        {item.projects.map((project) => (
+          <ExperienceProject key={`${item.role}-${project.title}`} project={project} />
+        ))}
       </div>
     </article>
   )
@@ -260,104 +282,107 @@ function App() {
   const [isStoryOpen, setIsStoryOpen] = useState(true)
 
   return (
-    <div className="page-shell">
-      <div className="page-glow page-glow-left" />
-      <div className="page-glow page-glow-right" />
-
-      <main className="page">
-        <header className="hero panel">
-          <div className="hero-top">
-            <img src={avatarImage} alt="Данил Ефремов" className="avatar" />
-
-            <div className="hero-copy">
-              <p className="eyebrow">Старший продуктовый дизайнер</p>
-              <h1>Данил Ефремов</h1>
-
-              <div className="contact-row" aria-label="Контакты">
-                {contacts.map((contact, index) => (
-                  <div key={contact.href} className="contact-item">
-                    {index > 0 && <span className="contact-dot">·</span>}
-                    <ExternalLink href={contact.href} className="contact-link">
-                      {contact.label}
-                    </ExternalLink>
-                  </div>
-                ))}
+    <div className="site-shell">
+      <div className="site-frame">
+        <main className="page">
+          <header className="hero panel">
+            <div className="hero-top">
+              <div className="avatar-wrap">
+                <img src={avatarImage} alt="Данил Ефремов" className="avatar" />
               </div>
-            </div>
-          </div>
 
-          <div className="summary-grid">
-            {summary.map((text) => (
-              <p key={text} className="summary-card">
-                {text}
-              </p>
-            ))}
-          </div>
-        </header>
+              <div className="hero-copy">
+                <p className="eyebrow">Старший продуктовый дизайнер</p>
+                <h1>Данил Ефремов</h1>
 
-        <section className="section">
-          <div className="section-head">
-            <p className="section-kicker">Пет проекты</p>
-            <div className="section-line" />
-          </div>
-
-          <article className={`story-card panel${isStoryOpen ? ' open' : ''}`}>
-            <button
-              type="button"
-              className="story-toggle"
-              onClick={() => setIsStoryOpen((open) => !open)}
-              aria-expanded={isStoryOpen}
-            >
-              <span className="story-toggle-icon" aria-hidden="true">
-                {isStoryOpen ? '−' : '+'}
-              </span>
-
-              <span className="story-toggle-copy">
-                <span className="story-label">📍 StoryTree</span>
-                <span className="story-subtitle">MVP промо и кусочек продукта</span>
-              </span>
-            </button>
-
-            {isStoryOpen && (
-              <div className="story-body">
-                {storyTreeParagraphs.map((paragraph) => (
-                  <p key={paragraph} className="project-text">
-                    {paragraph}
-                  </p>
-                ))}
-
-                <div className="story-links">
-                  <ExternalLink href="https://disk.yandex.ru/i/aVnKIcHtwAzf5A" className="story-link">
-                    Открыть материалы
-                  </ExternalLink>
-                  <ExternalLink href="https://www.thebrain.com" className="story-link muted-link">
-                    The Brain
-                  </ExternalLink>
-                  <ExternalLink
-                    href="https://www.eastgate.com/Tinderbox/"
-                    className="story-link muted-link"
-                  >
-                    Tinderbox
-                  </ExternalLink>
+                <div className="contact-row" aria-label="Контакты">
+                  {contacts.map((contact, index) => (
+                    <div key={contact.href} className="contact-item">
+                      {index > 0 && <span className="contact-dot">·</span>}
+                      <ExternalLink href={contact.href} className="contact-link">
+                        {contact.label}
+                      </ExternalLink>
+                    </div>
+                  ))}
                 </div>
               </div>
-            )}
-          </article>
-        </section>
+            </div>
 
-        <section className="section">
-          <div className="section-head">
-            <p className="section-kicker">Кто, где, когда</p>
-            <div className="section-line" />
-          </div>
+            <div className="summary-grid">
+              {summary.map((text) => (
+                <p key={text} className="summary-card">
+                  {text}
+                </p>
+              ))}
+            </div>
+          </header>
 
-          <div className="timeline">
-            {experience.map((item) => (
-              <ExperienceCard key={`${item.role}-${item.period}`} item={item} />
-            ))}
-          </div>
-        </section>
-      </main>
+          <section className="section">
+            <div className="section-head">
+              <p className="section-kicker">Пет проекты</p>
+              <div className="section-line" />
+            </div>
+
+            <article className="story-card panel">
+              <div className="story-banner">
+                <button
+                  type="button"
+                  className="story-toggle"
+                  onClick={() => setIsStoryOpen((value) => !value)}
+                  aria-expanded={isStoryOpen}
+                >
+                  <span className="story-toggle-icon" aria-hidden="true">
+                    {isStoryOpen ? '−' : '+'}
+                  </span>
+
+                  <span className="story-toggle-copy">
+                    <span className="story-label">📍 StoryTree</span>
+                    <span className="story-subtitle">MVP промо и кусочек продукта</span>
+                  </span>
+                </button>
+              </div>
+
+              {isStoryOpen && (
+                <div className="story-body">
+                  {storyTreeParagraphs.map((paragraph) => (
+                    <p key={paragraph} className="body-copy">
+                      {paragraph}
+                    </p>
+                  ))}
+
+                  <div className="story-links">
+                    <ExternalLink href="https://disk.yandex.ru/i/aVnKIcHtwAzf5A" className="pill-link">
+                      Открыть материалы
+                    </ExternalLink>
+                    <ExternalLink href="https://www.thebrain.com" className="pill-link pill-link-muted">
+                      The Brain
+                    </ExternalLink>
+                    <ExternalLink
+                      href="https://www.eastgate.com/Tinderbox/"
+                      className="pill-link pill-link-muted"
+                    >
+                      Tinderbox
+                    </ExternalLink>
+                  </div>
+                </div>
+              )}
+            </article>
+          </section>
+
+          <section className="section">
+            <div className="section-head">
+              <p className="section-kicker">Кто, где, когда</p>
+              <div className="section-line" />
+            </div>
+
+            <div className="timeline">
+              {experience.map((item) => (
+                <ExperienceCard key={`${item.role}-${item.period}`} item={item} />
+              ))}
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
   )
 }
