@@ -105,6 +105,8 @@
   align-items: center;
   gap: 8px;
   padding: 0;
+  border: 0;
+  background: transparent;
   color: #f0efed;
   cursor: pointer;
 }
@@ -142,7 +144,6 @@
 }
 
 .section-heading {
-  width: 237px;
   margin: 0 0 24px;
   color: #f0efed;
   font-size: 32px;
@@ -192,6 +193,10 @@
 }
 
 .experience-title-strong {
+  font-weight: 600;
+}
+
+.experience-title .accent-link {
   font-weight: 600;
 }
 

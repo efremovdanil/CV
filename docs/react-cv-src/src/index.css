@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap');
+
 :root {
   color: #f0efed;
   background: #191919;
@@ -32,6 +34,12 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+button {
+  border: 0;
+  background: transparent;
+  color: inherit;
 }
 
 a {
