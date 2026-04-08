@@ -1,9 +1,19 @@
 :root {
-  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
+  --bg-color: #110f12;
+  --bg-secondary-color: #181419;
+  --text-color: #f5efe6;
+  --soft-text-color: #d8cec0;
+  --muted-color: #b39b80;
+  --accent-color: #dcc09d;
+  --accent-strong-color: #f0d8b8;
+  --border-color: rgba(255, 255, 255, 0.08);
+  font-family: "Avenir Next", "Inter", "Segoe UI", sans-serif;
+  line-height: 1.65;
   font-weight: 400;
-  color: #e8edf6;
-  background-color: #191919;
+  color: var(--text-color);
+  background:
+    radial-gradient(circle at top, rgba(110, 85, 61, 0.24), transparent 34%),
+    linear-gradient(180deg, #141015 0%, var(--bg-color) 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -16,18 +26,41 @@
   box-sizing: border-box;
 }
 
+html {
+  background: var(--bg-color);
+}
+
 body {
   margin: 0;
+  min-width: 320px;
   min-height: 100vh;
-  background: #191919;
+  background:
+    radial-gradient(circle at top, rgba(110, 85, 61, 0.18), transparent 30%),
+    linear-gradient(180deg, var(--bg-secondary-color) 0%, var(--bg-color) 100%);
+}
+
+body::selection {
+  background: rgba(220, 192, 157, 0.28);
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 a {
-  color: #8ab4ff;
+  color: inherit;
   text-decoration: none;
+  transition:
+    color 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
 }
 
-a:hover {
-  color: #c1d4ff;
-  text-decoration: underline;
+img {
+  display: block;
+  max-width: 100%;
 }
